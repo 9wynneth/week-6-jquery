@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title style="text-align:center; font-size: 48px;">jQuery HTML CAPYBARA</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+		integrity="sha512-zmRgJ1j4HxyvLoMu1g/PhJYBhKNMfK5+ZkxXQn01C5fv5OJ8fIRgozBNQ2xCIMlMCwYHr8qnVukZjjI9g76kA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="Week6css.css">
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		// ketikkan kode jQuery di sini
+	$(document).ready(function() {
+  		$('#disable-button').click(function() {
+    	var buttonText = $(this).text();
+    	$(this).text('Loading...');
+    		setTimeout(function() {
+      	$('#disable-button').text(buttonText);
+    	}, 3000);
+  		});
+				
+		$("#toggle-div").click(function(){
+		$("#my-div").fadeToggle();
+		});
+
+		$(".btnOne").click(function(){
+      	$("p").text("All text is set.");
+    	});
+
+	
+   		$('#input-field').on('input', function() {
+    	$('#update-text').text($(this).val());
+   		});
+
+		const image = $('#my-image');
+		const button = $('#change-image');
+		let isImage1 = true;
+
+		button.on('click', function() {
+			if (isImage1) {
+			image.attr('src', 'https://media.istockphoto.com/id/1170335140/id/foto/satu-capybara-kecil-dengan-tongkat-pohon-kecil-di-mulutnya.jpg?s=170667a&w=0&k=20&c=XoqikZhMLQBB9M53dnhOoQf6oNkZokI-A5r9rg9DBOM=');
+			isImage1 = false;
+			} else {
+			image.attr('src', 'https://cdn.britannica.com/77/191677-050-3CBF2834/Capybara.jpg');
+			isImage1 = true;
+			}
+		});
+
+		var currentText = 1;
+		$('#click-me').click(function() {
+			if (currentText == 1) {
+			$('#my-paragraph').text('CAPYBARA CAPYBARA CAPYBARA');
+			currentText = 2;
+			} else {
+			$('#my-paragraph').text('Capybara!');
+			currentText = 1;
+			}
+		});
+
+		const input = $('#numeric-up-down-input');
+		const reduceButton = $('.reduce-button');
+		const addButton = $('.add-button');
+
+		reduceButton.on('click', function() {
+			let value = parseInt(input.val());
+			value--;
+			input.val(value);
+		});
+
+		addButton.on('click', function() {
+			let value = parseInt(input.val());
+			value++;
+			input.val(value);
+		});
+
+
+		$('button:last').click(function() {
+				var numCapybaras = parseInt($('#numeric-up-down-input').val());
+				var capybaraResult = $('.capybara-result');
+
+				if (numCapybaras === 1) {
+				capybaraResult.text(numCapybaras + ' Capybara Requested!');
+				} else {
+				capybaraResult.text(numCapybaras + ' Capybaras Requested!');
+				}
+			});
+
+	});
+
+
+	</script>
+</head>
+
+<body style="background-color: #e5e5e5; text-align: center;">
+	<div
+		style="max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; background-color: lightgoldenrodyellow;">
+
+		<!-- Task 1 - CAPYBARA DISABLED BUTTON 3 SECONDS -->
+		<button id="disable-button">Capybara button disabled for 3 seconds</button>
+		<br><br>
+
+		<!-- Task 2 - CAPYBARA SHOW HIDE -->
+		<button id="toggle-div">Capybara show/Capybara Hide</button>
+		<div id="my-div">
+			<img src="https://live.staticflickr.com/7448/9823960704_0748dbfced_b.jpg" width="200" height="200" alt="image1">
+		</div>
+		<br><br>
+
+		<!-- Task 3 - Update Text in Real Time -->
+		<label for="input-field">Type Something about capybara:</label>
+		<input type="text" id="input-field">
+		<div id="update-text"></div>
+		<br><br>
+
+		<!-- Task 4 - Change Image CAPYBARA small big -->
+		<div>
+			<button id="change-image">Change Image to small/big capybara</button>
+			<br><br><label style="display: block; text-align: center;" for="my-image">Image:</label>
+			<img id="my-image"
+				src="https://media.istockphoto.com/id/1170335140/id/foto/satu-capybara-kecil-dengan-tongkat-pohon-kecil-di-mulutnya.jpg?s=170667a&w=0&k=20&c=XoqikZhMLQBB9M53dnhOoQf6oNkZokI-A5r9rg9DBOM="
+				width="200" height="200">
+			<br><br>
+		</div>
+
+		<!-- Task 5 - GANTI text capybara-->
+		<button id="click-me">CLICK TO ADD or Minus the CAPYBARA</button>
+		<p id="my-paragraph">CAPYBARA!</p>
+
+		<div>
+			<div class="numeric-up-down-container"
+				style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+				<div class="reduce-button">
+					<button style="margin-right: 20px;">-</button>
+				</div>
+				<div class="value-input-field">
+					<input id="numeric-up-down-input" type="number" name="{{ $inputName }}" value="0">
+				</div>
+				<div class="add-button" style="margin-left: 20px;">
+					<button>+</button>
+				</div>
+			</div>
+			<button>Calculate Capybaras</button>
+			<div class="request-capybara-container">
+				<span class="capybara-result">No Capybaras Requested</span>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
